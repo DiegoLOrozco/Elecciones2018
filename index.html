@@ -29,6 +29,12 @@
 			alert("Esta página contiene gráficas dinámicas, en caso de no visualizarlas habilita los scripts en la barra de navegación");
 		});
 	});
+	
+	$(document).ready(function(){
+		$("button").click(function(){
+			$(".opcional").hide();
+		});
+	});
 	</script>
     <style>
 .dropbtn {
@@ -225,7 +231,8 @@ src="https://www.youtube.com/embed/adrQcRwqwwk?rel=0&amp;start=525" allow="autop
 allowfullscreen="" frameborder="0"></iframe>
 </pre> </div>
           </td>
-          <td style="width: 474.017px; text-align: justify;">
+          <td style="width: 474.017px; text-align: justify;" class="opcional">
+			<div align="center"><button>Ocultar mensaje de la junta Directiva</button></div>
             <div style="margin-left: 40px;"><span style="color: #666666;"><strong><span
 
                     style="font-family: Century Gothic;"><br>
@@ -341,8 +348,8 @@ allowfullscreen="" frameborder="0"></iframe>
             <div style="text-align: center;"><br>
             </div>
           </td>
-          <td><span style="color: #920477;">&nbsp;&nbsp; </span></td>
-          <td style="background-color: #cccccc;"><br>
+          <td class="opcional"><span style="color: #920477;">&nbsp;&nbsp; </span></td>
+          <td class= "opcional" style="background-color: #cccccc;"><br>
             <span style="color: #cccccc;">|</span></td>
           <td style="height: 731.5px;"> <br>
             <div style="font-family: Century Gothic;" align="center"><span style="color: #666666;"><strong>Participación
