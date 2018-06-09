@@ -23,6 +23,13 @@
         }
       }
     </script>
+	<script>
+	$(document).ready(function(){
+		$("#AdvGrafico").mouseenter(function(){
+			alert("Esta página contiene gráficas dinámicas, en caso de no visualizarlas habilita los scripts en la barra de navegación");
+		});
+	});
+	</script>
     <style>
 .dropbtn {
     background-color: #3e92a4;
@@ -348,7 +355,7 @@ allowfullscreen="" frameborder="0"></iframe>
               <h1><span style="color: #666666;"></span></h1>
               <span style="color: #666666;"> <br>
               </span>
-              <h3><span style="color: #666666;"><strong> Intención de voto
+              <h3 id="AdvGrafico"><span style="color: #666666;"><strong> Intención de voto
                     efectivo</strong></span></h3>
             </div>
             <div id="viz" style="font-family: Century Gothic;" align="center"> <span
