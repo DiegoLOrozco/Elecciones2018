@@ -25,16 +25,21 @@
     </script>
 	<script>
 	$(document).ready(function(){
+//        Evento1
 		$("#AdvGrafico").mouseenter(function(){
 			alert("Esta página contiene gráficas dinámicas, en caso de no visualizarlas habilita los scripts en la barra de navegación");
 		});
-	});
-	
-	$(document).ready(function(){
-		$("button").click(function(){
+//        Evento2        
+        $("#button2").click(function(){
+            $("#div2").fadeToggle("slow");
+        });
+//        Evento3        
+        $("#button1").click(function(){
 			$(".opcional").hide();
 		});
+        
 	});
+	
 	</script>
     <style>
 .dropbtn {
@@ -45,18 +50,15 @@
     border: none;
     cursor: pointer;
 }
-
 .dropbtn:hover, .dropbtn:focus {
     background-color: #3e92a4;
 }
-
 .dropdown {
     float: left;
     position: relative;
     display: inline-block;
     
 }
-
 .dropdown-content {
     display: none;
     position: relative;
@@ -65,7 +67,6 @@
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
-
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -73,11 +74,8 @@
     display: block;
   	font-family: Century Gothic;
 }
-
 .dropdown a:hover {background-color: #ddd}
-
 .show {display:block;}
-
 .axis path,
 .axis line {
       fill: none;
@@ -97,14 +95,12 @@
 .axis text {
 		font-size: 10px;
 	}
-
 .textos a {
   background-color: white;
 	color: #004444;
 	font-family: Century Gothic	;
 	text-align: right;
 }
-
 </style> <title>Actividad 2</title>
     <link rel="force-svg" href="http://berjon.com/blog/2009/07/force-svg.html">
   </head>
@@ -214,8 +210,13 @@
           </td>
         </tr>
         <tr>
+                    
+        
           <td style="width: 284.217px;">
-            <div style="text-align: center;">
+              
+              
+              
+            <div style="text-align: center">
               <pre><b><span style="font-family: Century Gothic;">Revive el segundo debate <br>presidencial aquí:</span></b><br><br><iframe
 
 src="https://www.youtube.com/embed/CYpIhHV9y4Y?rel=0&amp;start=600" allow="autoplay; encrypted-media"
@@ -223,16 +224,24 @@ src="https://www.youtube.com/embed/CYpIhHV9y4Y?rel=0&amp;start=600" allow="autop
 allowfullscreen="" frameborder="0"></iframe>
 <div class="video" style="text-align: center;">            </div></pre>
             </div>
-            <div style="text-align: center;"><br>
-              <pre><b><span style="font-family: Century Gothic;">Recordamos el primer debate:<br><br></span></b><iframe
+          
+              <div style="text-align: center">
+              <button id="button2">Primer debate</button>
+          </div>
+            
+            <div  id= "div2" style="text-align: center;display:none"><br>
+            <pre><b><span style="font-family: Century Gothic;">Recordamos el primer debate:<br><br></span></b><iframe
 
-src="https://www.youtube.com/embed/adrQcRwqwwk?rel=0&amp;start=525" allow="autoplay; encrypted-media"
+            src="https://www.youtube.com/embed/adrQcRwqwwk?rel=0&amp;start=525" allow="autoplay; encrypted-media"
 
-allowfullscreen="" frameborder="0"></iframe>
-</pre> </div>
+            allowfullscreen="" frameborder="0"></iframe>
+            </pre> </div>
+           
+            
           </td>
+        
           <td style="width: 474.017px; text-align: justify;" class="opcional">
-			<div align="center"><button>Ocultar mensaje de la junta Directiva</button></div>
+			<div align="center"><button id="button1">Ocultar mensaje de la junta Directiva</button></div>
             <div style="margin-left: 40px;"><span style="color: #666666;"><strong><span
 
                     style="font-family: Century Gothic;"><br>
@@ -414,7 +423,6 @@ allowfullscreen="" frameborder="0"></iframe>
 20180513	 0.45 	 0.19 	 0.28 	 0.03\n\
 20180515	 0.46 	 0.19 	 0.28 	 0.03\n\
 20180527	 0.51 	 0.19 	 0.26 	 0.03\n";
-
     var margin = {
         top: 20,
         right: 80,
@@ -423,15 +431,11 @@ allowfullscreen="" frameborder="0"></iframe>
       },
       width = 450 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
-
     var parseDate = d3.time.format("%Y%m%d").parse;
-
     var x = d3.time.scale()
       .range([0, width]);
-
     var y = d3.scale.linear()
       .range([height, 0]);
-
     var color = d3.scale.category10();
 	
 	var formatoY=d3.format(",.1%");
@@ -442,12 +446,10 @@ allowfullscreen="" frameborder="0"></iframe>
       .scale(x)
 	  .tickFormat(formatoX)
       .orient("bottom");
-
     var yAxis = d3.svg.axis()
       .scale(y)
 	  .tickFormat(formatoY)
       .orient("left");
-
     var line = d3.svg.line()
       .interpolate("basis")
       .x(function(d) {
@@ -456,23 +458,18 @@ allowfullscreen="" frameborder="0"></iframe>
       .y(function(d) {
         return y(d.calificacion);
       });
-
     var svg = d3.select("#viz").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
     var data = d3.tsv.parse(myData);
-
     color.domain(d3.keys(data[0]).filter(function(key) {
       return key !== "date";
     }));
-
     data.forEach(function(d) {
       d.date = parseDate(d.date);
     });
-
     var cities = color.domain().map(function(name) {
       return {
         name: name,
@@ -484,11 +481,9 @@ allowfullscreen="" frameborder="0"></iframe>
         })
       };
     });
-
     x.domain(d3.extent(data, function(d) {
       return d.date;
     }));
-
     y.domain([
       d3.min(cities, function(c) {
         return d3.min(c.values, function(v) {
@@ -501,12 +496,10 @@ allowfullscreen="" frameborder="0"></iframe>
         });
       })
     ]);
-
     svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
-
     svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
@@ -515,12 +508,10 @@ allowfullscreen="" frameborder="0"></iframe>
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end");
-
     var city = svg.selectAll(".city")
       .data(cities)
       .enter().append("g")
       .attr("class", "city");
-
     city.append("path")
       .attr("class", "line")
       .attr("d", function(d) {
@@ -529,7 +520,6 @@ allowfullscreen="" frameborder="0"></iframe>
       .style("stroke", function(d) {
         return color(d.name);
       });
-
     city.append("text")
       .datum(function(d) {
         return {
@@ -545,10 +535,8 @@ allowfullscreen="" frameborder="0"></iframe>
       .text(function(d) {
         return d.name;
       });
-
     var mouseG = svg.append("g")
       .attr("class", "mouse-over-effects");
-
     mouseG.append("path") // this is the black vertical line to follow mouse
       .attr("class", "mouse-line")
       .style("stroke", "black")
@@ -556,13 +544,11 @@ allowfullscreen="" frameborder="0"></iframe>
       .style("opacity", "0");
       
     var lines = document.getElementsByClassName('line');
-
     var mousePerLine = mouseG.selectAll('.mouse-per-line')
       .data(cities)
       .enter()
       .append("g")
       .attr("class", "mouse-per-line");
-
     mousePerLine.append("circle")
       .attr("r", 7)
       .style("stroke", function(d) {
@@ -571,10 +557,8 @@ allowfullscreen="" frameborder="0"></iframe>
       .style("fill", "none")
       .style("stroke-width", "1px")
       .style("opacity", "0");
-
     mousePerLine.append("text")
       .attr("transform", "translate(10,3)");
-
     mouseG.append('svg:rect') // append a rect to catch mouse movements on canvas
       .attr('width', width) // can't catch mouse events on a g element
       .attr('height', height)
@@ -604,7 +588,6 @@ allowfullscreen="" frameborder="0"></iframe>
             d += " " + mouse[0] + "," + 0;
             return d;
           });
-
         d3.selectAll(".mouse-per-line")
           .attr("transform", function(d, i) {
             console.log(width/mouse[0])
@@ -615,7 +598,6 @@ allowfullscreen="" frameborder="0"></iframe>
             var beginning = 0,
                 end = lines[i].getTotalLength(),
                 target = null;
-
             while (true){
               target = Math.floor((beginning + end) / 2);
               pos = lines[i].getPointAtLength(target);
